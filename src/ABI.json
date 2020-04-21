@@ -53,11 +53,6 @@
                 "internalType": "string",
                 "name": "_bloodGroup",
                 "type": "string"
-            },
-            {
-                "internalType": "bytes32",
-                "name": "_licience",
-                "type": "bytes32"
             }
         ],
         "name": "addDoctor",
@@ -242,11 +237,6 @@
                 "internalType": "string",
                 "name": "bloodGroup",
                 "type": "string"
-            },
-            {
-                "internalType": "bytes32",
-                "name": "licience",
-                "type": "bytes32"
             }
         ],
         "payable": false,
@@ -295,11 +285,6 @@
                 "internalType": "string",
                 "name": "_bloodGroup",
                 "type": "string"
-            },
-            {
-                "internalType": "bytes32",
-                "name": "_licience",
-                "type": "bytes32"
             }
         ],
         "name": "editDoctor",
