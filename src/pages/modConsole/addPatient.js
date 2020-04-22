@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import md5 from "md5";
 import web3 from "../../web3";
-import contract from "../../contract";
+import contract from "../../contract-h";
 import NavBar from "../../components/modNav";
 
 class Com extends Component {

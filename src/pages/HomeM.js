@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "../components/modNav";
-import contract from "../contract";
+import contract from "../contract-h";
 
 class App extends Component {
     state = {

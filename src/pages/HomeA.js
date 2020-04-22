@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import web3 from "../web3";
-import contract from "../contract";
+import contract from "../contract-h";
 
 class App extends Component {
     state = {

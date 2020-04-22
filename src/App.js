@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import web3 from "./web3";
-import contract from "./contract";
+import contract from "./contract-h";
 import "./App.css";
 import { Route } from "react-router-dom";
 import HomeA from "./pages/HomeA";
@@ -12,6 +12,8 @@ import addPat from "./pages/modConsole/addPatient";
 import editDoc from "./pages/modConsole/editDoctor";
 import editPat from "./pages/modConsole/editPatient";
 import remDoc from "./pages/modConsole/removeDoctor";
+import presBro from "./pages/docConsole/presBrowser";
+import presView from "./pages/docConsole/presViewer";
 
 class App extends Component {
     state = {
@@ -67,6 +69,12 @@ class App extends Component {
                 <Route exact path="/addDoctor" component={addDoc}></Route>
                 <Route exact path="/editDoctor" component={editDoc}></Route>
                 <Route exact path="/removeDoctor" component={remDoc}></Route>
+                <Route exact path="/presBrowser" component={presBro}></Route>
+                <Route
+                    exact
+                    path="/presViewer/:presID"
+                    component={presView}
+                ></Route>
             </div>
         );
     }
