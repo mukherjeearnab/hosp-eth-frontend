@@ -8,13 +8,16 @@ function NavBar() {
                 <Link to="/">Home</Link>
             </li>
             <li>
-                <Link to="/About">About</Link>
+                <Link to="/addPatient">Add Patient</Link>
             </li>
             <li>
-                <Link to="/Projects">Projects</Link>
+                <Link to="/editPatient">Edit Patient</Link>
             </li>
             <li>
-                <Link to="/Contact">Contact</Link>
+                <Link to="/addDoctor">Add Doctor</Link>
+            </li>
+            <li>
+                <Link to="/editDoctor">Edit Doctor</Link>
             </li>
         </ul>
     );

@@ -7,6 +7,10 @@ import HomeA from "./pages/HomeA";
 import HomeM from "./pages/HomeM";
 import HomeD from "./pages/HomeD";
 import HomeU from "./pages/HomeU";
+import addDoc from "./pages/modConsole/addDoctor";
+import addPat from "./pages/modConsole/addPatient";
+import editDoc from "./pages/modConsole/editDoctor";
+import editPat from "./pages/modConsole/editPatient";
 
 class App extends Component {
     state = {
@@ -56,6 +60,10 @@ class App extends Component {
                             : HomeU
                     }
                 ></Route>
+                <Route exact path="/addPatient" component={addPat}></Route>
+                <Route exact path="/editPatient" component={editPat}></Route>
+                <Route exact path="/addDoctor" component={addDoc}></Route>
+                <Route exact path="/editDoctor" component={editDoc}></Route>
             </div>
         );
     }

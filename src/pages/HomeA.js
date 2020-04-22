@@ -7,6 +7,7 @@ class App extends Component {
         address_add: "",
         address_rem: "",
         message: "",
+        color: "red",
     };
 
     onAddModerator = async (event) => {
@@ -14,7 +15,10 @@ class App extends Component {
 
         const accounts = await web3.eth.getAccounts();
 
-        this.setState({ message: "Waiting on transaction success..." });
+        this.setState({
+            message: "Waiting on transaction success...",
+            color: "yellow",
+        });
 
         await contract.methods.addModerator(this.state.address_add).send({
             from: accounts[0],
@@ -22,7 +26,7 @@ class App extends Component {
 
         let message = "Added " + this.state.address_add;
 
-        this.setState({ message });
+        this.setState({ message, color: "green" });
     };
 
     onRemoveModerator = async (event) => {
@@ -30,7 +34,10 @@ class App extends Component {
 
         const accounts = await web3.eth.getAccounts();
 
-        this.setState({ message: "Waiting on transaction success..." });
+        this.setState({
+            message: "Waiting on transaction success...",
+            color: "yellow",
+        });
 
         await contract.methods.removeModerator(this.state.address_rem).send({
             from: accounts[0],
@@ -38,7 +45,7 @@ class App extends Component {
 
         let message = "Removed " + this.state.address_rem;
 
-        this.setState({ message });
+        this.setState({ message, color: "green" });
     };
 
     onKill = async (event) => {
@@ -60,8 +67,10 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h1>Admin's Home</h1>
-                <h3>{this.state.message}</h3>
+                <h1>Admin's Console</h1>
+                <h3 style={{ color: this.state.color }}>
+                    {this.state.message}
+                </h3>
                 <form onSubmit={this.onAddModerator}>
                     <h4>Adder New Moderator</h4>
                     <div>
