@@ -1,5 +1,17 @@
 [
     {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_hospitalName",
+                "type": "string"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
         "constant": false,
         "inputs": [
             {
@@ -68,9 +80,9 @@
         "constant": false,
         "inputs": [
             {
-                "internalType": "bytes32",
+                "internalType": "bytes16",
                 "name": "_presID",
-                "type": "bytes32"
+                "type": "bytes16"
             },
             {
                 "internalType": "address",
@@ -78,9 +90,9 @@
                 "type": "address"
             },
             {
-                "internalType": "bytes32",
+                "internalType": "bytes16",
                 "name": "_patient",
-                "type": "bytes32"
+                "type": "bytes16"
             },
             {
                 "internalType": "uint256",
@@ -103,9 +115,9 @@
         "constant": false,
         "inputs": [
             {
-                "internalType": "bytes32",
+                "internalType": "bytes16",
                 "name": "_pID",
-                "type": "bytes32"
+                "type": "bytes16"
             },
             {
                 "internalType": "string",
@@ -143,161 +155,6 @@
         "payable": false,
         "stateMutability": "nonpayable",
         "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_pID",
-                "type": "address"
-            },
-            {
-                "internalType": "string",
-                "name": "_ID",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "_name",
-                "type": "string"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_DoB",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint8",
-                "name": "_gender",
-                "type": "uint8"
-            },
-            {
-                "internalType": "uint16",
-                "name": "_height",
-                "type": "uint16"
-            },
-            {
-                "internalType": "uint16",
-                "name": "_weight",
-                "type": "uint16"
-            },
-            {
-                "internalType": "string",
-                "name": "_bloodGroup",
-                "type": "string"
-            }
-        ],
-        "name": "editDoctor",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "internalType": "bytes32",
-                "name": "_pID",
-                "type": "bytes32"
-            },
-            {
-                "internalType": "string",
-                "name": "_name",
-                "type": "string"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_DoB",
-                "type": "uint256"
-            },
-            {
-                "internalType": "uint8",
-                "name": "_gender",
-                "type": "uint8"
-            },
-            {
-                "internalType": "uint16",
-                "name": "_height",
-                "type": "uint16"
-            },
-            {
-                "internalType": "uint16",
-                "name": "_weight",
-                "type": "uint16"
-            },
-            {
-                "internalType": "string",
-                "name": "_bloodGroup",
-                "type": "string"
-            }
-        ],
-        "name": "editPatient",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "fundME",
-        "outputs": [],
-        "payable": true,
-        "stateMutability": "payable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [],
-        "name": "kill",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_doctor",
-                "type": "address"
-            }
-        ],
-        "name": "removeDoctor",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": false,
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "_moderator",
-                "type": "address"
-            }
-        ],
-        "name": "removeModerator",
-        "outputs": [],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "string",
-                "name": "_hospitalName",
-                "type": "string"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "nonpayable",
-        "type": "constructor"
     },
     {
         "constant": true,
@@ -387,6 +244,110 @@
         "type": "function"
     },
     {
+        "constant": false,
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_pID",
+                "type": "address"
+            },
+            {
+                "internalType": "string",
+                "name": "_ID",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_DoB",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "_gender",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint16",
+                "name": "_height",
+                "type": "uint16"
+            },
+            {
+                "internalType": "uint16",
+                "name": "_weight",
+                "type": "uint16"
+            },
+            {
+                "internalType": "string",
+                "name": "_bloodGroup",
+                "type": "string"
+            }
+        ],
+        "name": "editDoctor",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "internalType": "bytes16",
+                "name": "_pID",
+                "type": "bytes16"
+            },
+            {
+                "internalType": "string",
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_DoB",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint8",
+                "name": "_gender",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint16",
+                "name": "_height",
+                "type": "uint16"
+            },
+            {
+                "internalType": "uint16",
+                "name": "_weight",
+                "type": "uint16"
+            },
+            {
+                "internalType": "string",
+                "name": "_bloodGroup",
+                "type": "string"
+            }
+        ],
+        "name": "editPatient",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [],
+        "name": "fundME",
+        "outputs": [],
+        "payable": true,
+        "stateMutability": "payable",
+        "type": "function"
+    },
+    {
         "constant": true,
         "inputs": [],
         "name": "hospitalName",
@@ -399,6 +360,15 @@
         ],
         "payable": false,
         "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [],
+        "name": "kill",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -426,9 +396,9 @@
         "constant": true,
         "inputs": [
             {
-                "internalType": "bytes32",
+                "internalType": "bytes16",
                 "name": "",
-                "type": "bytes32"
+                "type": "bytes16"
             }
         ],
         "name": "patientMap",
@@ -484,6 +454,36 @@
         "type": "function"
     },
     {
+        "constant": false,
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_doctor",
+                "type": "address"
+            }
+        ],
+        "name": "removeDoctor",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_moderator",
+                "type": "address"
+            }
+        ],
+        "name": "removeModerator",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
         "constant": true,
         "inputs": [
             {
@@ -495,9 +495,9 @@
         "name": "retDoctorsPrescriptions",
         "outputs": [
             {
-                "internalType": "bytes32[]",
+                "internalType": "bytes16[]",
                 "name": "",
-                "type": "bytes32[]"
+                "type": "bytes16[]"
             }
         ],
         "payable": false,
@@ -508,17 +508,17 @@
         "constant": true,
         "inputs": [
             {
-                "internalType": "bytes32",
+                "internalType": "bytes16",
                 "name": "_pID",
-                "type": "bytes32"
+                "type": "bytes16"
             }
         ],
         "name": "retPatientPrescriptions",
         "outputs": [
             {
-                "internalType": "bytes32[]",
+                "internalType": "bytes16[]",
                 "name": "",
-                "type": "bytes32[]"
+                "type": "bytes16[]"
             }
         ],
         "payable": false,

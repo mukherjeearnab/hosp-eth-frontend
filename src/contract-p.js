@@ -1,6 +1,6 @@
 import web3 from "./web3";
 
-const address = "0x6d5e9f77ce8F4B43836Df0f5Db3cbFF0e3861966";
+const address = "0x8c7E4B42E007036d3924060e6261a69D30df7017";
 
 const abi = require("./ABI-p.json");
 

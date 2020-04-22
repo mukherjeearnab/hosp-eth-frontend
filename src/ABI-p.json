@@ -15,9 +15,9 @@
         "constant": false,
         "inputs": [
             {
-                "internalType": "bytes32",
+                "internalType": "bytes16",
                 "name": "_presID",
-                "type": "bytes32"
+                "type": "bytes16"
             },
             {
                 "internalType": "address",
@@ -25,9 +25,9 @@
                 "type": "address"
             },
             {
-                "internalType": "bytes32",
+                "internalType": "bytes16",
                 "name": "_patient",
-                "type": "bytes32"
+                "type": "bytes16"
             },
             {
                 "internalType": "uint256",
@@ -89,9 +89,9 @@
         "constant": true,
         "inputs": [
             {
-                "internalType": "bytes32",
+                "internalType": "bytes16",
                 "name": "",
-                "type": "bytes32"
+                "type": "bytes16"
             }
         ],
         "name": "prescriptionMap",
@@ -102,9 +102,9 @@
                 "type": "address"
             },
             {
-                "internalType": "bytes32",
+                "internalType": "bytes16",
                 "name": "patient",
-                "type": "bytes32"
+                "type": "bytes16"
             },
             {
                 "internalType": "uint256",
