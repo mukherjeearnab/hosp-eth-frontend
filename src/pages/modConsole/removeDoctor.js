@@ -1,22 +1,60 @@
 import React, { Component } from "react";
-import md5 from "md5";
 import web3 from "../../web3";
-import contract from "../../contract";
 import NavBar from "../../components/modNav";
+import contract from "../../contract";
 
-class Com extends Component {
+class App extends Component {
     state = {
         color: "red",
         message: "",
-        pname: "",
-        pdate: "",
-        pheight: 0,
-        pweight: 0,
-        pgender: "",
-        pbgroup: "",
+        daddress: "",
+        dcontent: "",
     };
 
-    onAddPatient = async (event) => {
+    onFindDoctor = async (event) => {
+        event.preventDefault();
+
+        let doctorsDetails = await contract.methods
+            .doctorsMap(this.state.daddress)
+            .call();
+
+        let dcontent = this.createContent(doctorsDetails);
+
+        this.setState({ dcontent });
+    };
+
+    createContent = (pd) => {
+        var date = new Date(parseInt(pd.DoB));
+        date =
+            date.getDate() +
+            "-" +
+            (date.getMonth() + 1) +
+            "-" +
+            date.getFullYear();
+        return (
+            <div>
+                <p>Doctor's Name - {pd.name}</p>
+                <p>Doctor's ID - {pd.ID}</p>
+                <p>DoB - {date}</p>
+                <p>
+                    Gender -{" "}
+                    {pd.gender === "0"
+                        ? "Male"
+                        : pd.gender === "1"
+                        ? "Female"
+                        : "Other"}
+                </p>
+                <p>Height - {pd.height} Centimeters</p>
+                <p>Weight - {pd.weight} Kilograms</p>
+                <p>Bloog Group - {pd.bloodGroup}</p>
+                <form onSubmit={this.onRemove}>
+                    <button>Remove Doctor & Delete Data</button>
+                </form>
+            </div>
+        );
+    };
+
+    onRemove = async (event) => {
         event.preventDefault();
 
         const accounts = await web3.eth.getAccounts();
@@ -26,36 +64,21 @@ class Com extends Component {
             color: "tomato",
         });
 
-        let hash = md5(
-            this.state.pname +
-                this.state.pdate +
-                this.state.pheight +
-                this.state.pweight +
-                this.state.pgender +
-                this.state.pbgroup
-        );
+        await contract.methods.removeDoctor(this.state.daddress).send({
+            from: accounts[0],
+        });
 
-        hash = "0x" + hash;
+        let doctorsDetails = await contract.methods
+            .doctorsMap(this.state.daddress)
+            .call();
 
-        console.log(hash);
+        let dcontent = this.createContent(doctorsDetails);
 
-        await contract.methods
-            .addPatient(
-                hash,
-                this.state.pname,
-                this.state.pdate,
-                this.state.pgender,
-                this.state.pheight,
-                this.state.pweight,
-                this.state.pbgroup
-            )
-            .send({
-                from: accounts[0],
-            });
-
-        let message = "Added Patient with ID - " + hash;
+        let message =
+            "Removed Doctor with Ethereum Address - " + this.state.daddress;
 
         this.setState({ message, color: "green" });
+        this.setState({ dcontent });
     };
 
     render() {
@@ -65,85 +88,28 @@ class Com extends Component {
                     {this.state.message}
                 </h3>
                 <NavBar />
-                <form onSubmit={this.onAddPatient}>
-                    <h4>Adder New Patient</h4>
-                    <div>
-                        <label>Patient name : </label>
-                        <input
-                            value={this.state.pname}
-                            onChange={(event) =>
-                                this.setState({
-                                    pname: event.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div>
-                        <label>Date of Birth : </label>
-                        <input
-                            value={this.state.pdate}
-                            type="date"
-                            onChange={(event) =>
-                                this.setState({
-                                    pdate: event.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div>
-                        <label>
-                            Gender (0 => Male, 1 => Female, 2 => Other):{" "}
-                        </label>
-                        <input
-                            value={this.state.pgender}
-                            type="number"
-                            onChange={(event) =>
-                                this.setState({
-                                    pgender: event.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div>
-                        <label>Height (in Centimeters) : </label>
-                        <input
-                            value={this.state.pheight}
-                            type="number"
-                            onChange={(event) =>
-                                this.setState({
-                                    pheight: event.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div>
-                        <label>Weight (in Kilograms) : </label>
-                        <input
-                            value={this.state.pweight}
-                            type="number"
-                            onChange={(event) =>
-                                this.setState({
-                                    pweight: event.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <div>
-                        <label>Blood Group : </label>
-                        <input
-                            value={this.state.pbgroup}
-                            onChange={(event) =>
-                                this.setState({
-                                    pbgroup: event.target.value,
-                                })
-                            }
-                        />
-                    </div>
-                    <button>Add Patient</button>
-                </form>
+                <div>
+                    <h4>Remove Doctor</h4>
+                    <form onSubmit={this.onFindDoctor}>
+                        <div>
+                            <label>Doctor's Ethereum Address : </label>
+                            <input
+                                value={this.state.daddress}
+                                onChange={(event) =>
+                                    this.setState({
+                                        daddress: event.target.value,
+                                    })
+                                }
+                            />
+                        </div>
+                        <button>Find Doctor</button>
+                    </form>
+                    {this.state.dcontent}
+                </div>
+                <hr />
             </div>
         );
     }
 }
 
-export default Com;
+export default App;

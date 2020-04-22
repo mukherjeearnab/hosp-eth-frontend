@@ -11,6 +11,7 @@ import addDoc from "./pages/modConsole/addDoctor";
 import addPat from "./pages/modConsole/addPatient";
 import editDoc from "./pages/modConsole/editDoctor";
 import editPat from "./pages/modConsole/editPatient";
+import remDoc from "./pages/modConsole/removeDoctor";
 
 class App extends Component {
     state = {
@@ -46,7 +47,8 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <h1>Account - {this.state.account}</h1>
+                <h1>{this.state.contractName}</h1>
+                <h2>Account - {this.state.account}</h2>
                 <Route
                     exact
                     path="/"
@@ -64,6 +66,7 @@ class App extends Component {
                 <Route exact path="/editPatient" component={editPat}></Route>
                 <Route exact path="/addDoctor" component={addDoc}></Route>
                 <Route exact path="/editDoctor" component={editDoc}></Route>
+                <Route exact path="/removeDoctor" component={remDoc}></Route>
             </div>
         );
     }

@@ -19,6 +19,9 @@ function NavBar() {
             <li>
                 <Link to="/editDoctor">Edit Doctor</Link>
             </li>
+            <li>
+                <Link to="/removeDoctor">Remove Doctor</Link>
+            </li>
         </ul>
     );
 }

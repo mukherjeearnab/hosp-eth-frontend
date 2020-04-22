@@ -51,17 +51,17 @@ class App extends Component {
 
     createContent = (pd, signal) => {
         if (signal === 0) {
-            var date = new Date(parseInt(pd.DoB));
-            date =
-                date.getDate() +
+            var date0 = new Date(parseInt(pd.DoB));
+            date0 =
+                date0.getDate() +
                 "-" +
-                (date.getMonth() + 1) +
+                (date0.getMonth() + 1) +
                 "-" +
-                date.getFullYear();
+                date0.getFullYear();
             return (
                 <div>
                     <p>Name - {pd.name}</p>
-                    <p>DoB - {date}</p>
+                    <p>DoB - {date0}</p>
                     <p>
                         Gender -{" "}
                         {pd.gender === "0"
