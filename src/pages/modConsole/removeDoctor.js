@@ -5,7 +5,7 @@ import contract from "../../contract";
 
 class App extends Component {
     state = {
-        color: "tomato",
+        color: "red",
         message: "",
         daddress: "",
         dcontent: "",
