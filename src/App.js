@@ -14,6 +14,8 @@ import editPat from "./pages/modConsole/editPatient";
 import remDoc from "./pages/modConsole/removeDoctor";
 import presBro from "./pages/docConsole/presBrowser";
 import presView from "./pages/docConsole/presViewer";
+import presBro2 from "./pages/patConsole/presBrowser";
+import presView2 from "./pages/patConsole/presViewer";
 
 class App extends Component {
     state = {
@@ -35,11 +37,11 @@ class App extends Component {
         if (user) this.setState({ userType: 2 });
         else if (!user) {
             user = await contract.methods.doctors(this.state.account).call();
-            console.log(user);
+            // console.log(user);
             if (user) this.setState({ userType: 3 });
             else if (!user) {
                 user = await contract.methods.admin().call();
-                console.log(user);
+                // console.log(user);
                 if (user === this.state.account) this.setState({ userType: 1 });
                 else this.setState({ userType: 9 });
             }
@@ -74,6 +76,16 @@ class App extends Component {
                     exact
                     path="/presViewer/:presID"
                     component={presView}
+                ></Route>
+                <Route
+                    exact
+                    path="/presBrowser/:presID"
+                    component={presBro2}
+                ></Route>
+                <Route
+                    exact
+                    path="/presViewer2/:presID"
+                    component={presView2}
                 ></Route>
             </div>
         );

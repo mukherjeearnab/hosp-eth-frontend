@@ -18,6 +18,16 @@ class Com extends Component {
         dbgroup: "",
     };
 
+    // async componentDidMount() {
+    //     await this.checkAccess();
+    // }
+
+    // async checkAccess() {
+    //     const accounts = await web3.eth.getAccounts();
+    //     const result = await contract.methods.moderators(accounts[0]).call();
+    //     if (!result) Router.transitionTo("/");
+    // }
+
     onAddDoctor = async (event) => {
         event.preventDefault();
 

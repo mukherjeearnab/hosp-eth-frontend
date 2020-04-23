@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import contractp from "../../contract-p";
 import contract from "../../contract-h";
-import NavBar from "../../components/docNav";
+import { Link } from "react-router-dom";
 
 class App extends Component {
     state = {
@@ -52,8 +52,8 @@ class App extends Component {
     render() {
         return (
             <div>
-                <NavBar />
-                <h2>Prescription Viewer</h2>
+                <h3>Patient Prescription Viewer</h3>
+                <Link to="/">Home</Link>
                 <h4>Prescription ID - {this.state.presID}</h4>
                 <h5>Doctor - {this.state.dname}</h5>
                 <h5>Patient - {this.state.pname}</h5>

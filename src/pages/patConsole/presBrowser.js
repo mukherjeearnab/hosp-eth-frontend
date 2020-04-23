@@ -1,30 +1,27 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import web3 from "../../web3";
 import contract from "../../contract-h";
-import NavBar from "../../components/docNav";
 
 class App extends Component {
     state = {
         pres: [],
-        daddress: "",
         content: "",
     };
 
     async componentDidMount() {
-        const accounts = await web3.eth.getAccounts();
+        const { presID } = this.props.match.params;
         const pres = await contract.methods
-            .retDoctorsPrescriptions(accounts[0])
+            .retPatientPrescriptions(presID)
             .call();
 
-        this.setState({ pres, daddress: accounts[0] });
+        this.setState({ pres });
     }
 
     render() {
         return (
             <div>
-                <NavBar />
-                <h1>Prescription Browser</h1>
+                <Link to="/">Home</Link>
+                <h1>Patient Prescription Browser</h1>
                 <div>
                     <table align="center" border="1">
                         <tbody>
@@ -39,7 +36,7 @@ class App extends Component {
                                     return (
                                         <tr key={id}>
                                             <td>
-                                                <Link to={`/presViewer/${id}`}>
+                                                <Link to={`/presViewer2/${id}`}>
                                                     {id}
                                                 </Link>
                                             </td>

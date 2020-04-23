@@ -62,6 +62,8 @@ class App extends Component {
                 </h3>
                 <NavBar />
                 <div>
+                    <hr />
+                    <h4>New Prescription</h4>
                     <form onSubmit={this.onNewPresciption}>
                         <div>
                             <label>Patient ID : </label>
