@@ -53,7 +53,7 @@ class App extends Component {
                                         <tr key={content.id}>
                                             <td>
                                                 <Link
-                                                    to={`/presViewer/${content.id}`}
+                                                    to={`/presViewer2/${content.id}`}
                                                 >
                                                     Dr. {content.doctor}
                                                 </Link>
