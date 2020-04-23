@@ -237,6 +237,11 @@
                 "internalType": "string",
                 "name": "bloodGroup",
                 "type": "string"
+            },
+            {
+                "internalType": "bool",
+                "name": "exists",
+                "type": "bool"
             }
         ],
         "payable": false,
@@ -333,6 +338,21 @@
             }
         ],
         "name": "editPatient",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_doctor",
+                "type": "address"
+            }
+        ],
+        "name": "enableDoctor",
         "outputs": [],
         "payable": false,
         "stateMutability": "nonpayable",

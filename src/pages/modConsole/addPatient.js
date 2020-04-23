@@ -42,7 +42,7 @@ class Com extends Component {
 
         hash = "0x" + hash;
 
-        console.log(hash, date);
+        // console.log(hash, date);
 
         await contract.methods
             .addPatient(

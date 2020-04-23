@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import contract from "../../contract-h";
+import contractp from "../../contract-p";
 
 class App extends Component {
     state = {
@@ -10,9 +11,23 @@ class App extends Component {
 
     async componentDidMount() {
         const { presID } = this.props.match.params;
-        const pres = await contract.methods
+        const presI = await contract.methods
             .retPatientPrescriptions(presID)
             .call();
+
+        let pres = [];
+
+        for (let a = 0; a < presI.length; a++) {
+            let pre = await contractp.methods.prescriptionMap(presI[a]).call();
+            let doc = await contract.methods.doctorsMap(pre.doctor).call();
+            let time = new Date(parseInt(pre.timestamp)).toString();
+            let obj = {
+                doctor: doc.name,
+                timestamp: time,
+                id: presI[a],
+            };
+            pres.push(obj);
+        }
 
         this.setState({ pres });
     }
@@ -26,20 +41,24 @@ class App extends Component {
                     <table align="center" border="1">
                         <tbody>
                             <tr>
-                                <th>Prescription ID</th>
+                                <th>Doctor's Name</th>
+                                <th>Date & Time</th>
                             </tr>
 
                             {this.state.pres
                                 .slice(0)
                                 .reverse()
-                                .map((id) => {
+                                .map((content) => {
                                     return (
-                                        <tr key={id}>
+                                        <tr key={content.id}>
                                             <td>
-                                                <Link to={`/presViewer2/${id}`}>
-                                                    {id}
+                                                <Link
+                                                    to={`/presViewer/${content.id}`}
+                                                >
+                                                    Dr. {content.doctor}
                                                 </Link>
                                             </td>
+                                            <td>{content.timestamp}</td>
                                         </tr>
                                     );
                                 })}

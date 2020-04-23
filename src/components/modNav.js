@@ -20,7 +20,10 @@ function NavBar() {
                 <Link to="/editDoctor">Edit Doctor</Link>
             </li>
             <li>
-                <Link to="/removeDoctor">Remove Doctor</Link>
+                <Link to="/removeDoctor">Disable / Remove Doctor</Link>
+            </li>
+            <li>
+                <Link to="/enableDoctor">Enable / Reinstate Doctor</Link>
             </li>
         </ul>
     );

@@ -12,6 +12,7 @@ import addPat from "./pages/modConsole/addPatient";
 import editDoc from "./pages/modConsole/editDoctor";
 import editPat from "./pages/modConsole/editPatient";
 import remDoc from "./pages/modConsole/removeDoctor";
+import enbDoc from "./pages/modConsole/enableDoctor";
 import presBro from "./pages/docConsole/presBrowser";
 import presView from "./pages/docConsole/presViewer";
 import presBro2 from "./pages/patConsole/presBrowser";
@@ -71,6 +72,7 @@ class App extends Component {
                 <Route exact path="/addDoctor" component={addDoc}></Route>
                 <Route exact path="/editDoctor" component={editDoc}></Route>
                 <Route exact path="/removeDoctor" component={remDoc}></Route>
+                <Route exact path="/enableDoctor" component={enbDoc}></Route>
                 <Route exact path="/presBrowser" component={presBro}></Route>
                 <Route
                     exact

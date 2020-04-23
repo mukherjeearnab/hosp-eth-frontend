@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import web3 from "../../web3";
 import contract from "../../contract-h";
+import contractp from "../../contract-p";
 import NavBar from "../../components/docNav";
 
 class App extends Component {
@@ -13,9 +14,23 @@ class App extends Component {
 
     async componentDidMount() {
         const accounts = await web3.eth.getAccounts();
-        const pres = await contract.methods
+        const presID = await contract.methods
             .retDoctorsPrescriptions(accounts[0])
             .call();
+
+        let pres = [];
+
+        for (let a = 0; a < presID.length; a++) {
+            let pre = await contractp.methods.prescriptionMap(presID[a]).call();
+            let pat = await contract.methods.patientMap(pre.patient).call();
+            let time = new Date(parseInt(pre.timestamp)).toString();
+            let obj = {
+                patient: pat.name,
+                timestamp: time,
+                id: presID[a],
+            };
+            pres.push(obj);
+        }
 
         this.setState({ pres, daddress: accounts[0] });
     }
@@ -29,20 +44,24 @@ class App extends Component {
                     <table align="center" border="1">
                         <tbody>
                             <tr>
-                                <th>Prescription ID</th>
+                                <th>Patient Name</th>
+                                <th>Date & Time</th>
                             </tr>
 
                             {this.state.pres
                                 .slice(0)
                                 .reverse()
-                                .map((id) => {
+                                .map((content) => {
                                     return (
-                                        <tr key={id}>
+                                        <tr key={content.id}>
                                             <td>
-                                                <Link to={`/presViewer/${id}`}>
-                                                    {id}
+                                                <Link
+                                                    to={`/presViewer/${content.id}`}
+                                                >
+                                                    {content.patient}
                                                 </Link>
                                             </td>
+                                            <td>{content.timestamp}</td>
                                         </tr>
                                     );
                                 })}

@@ -47,14 +47,14 @@ class App extends Component {
                 <p>Height - {pd.height} Centimeters</p>
                 <p>Weight - {pd.weight} Kilograms</p>
                 <p>Bloog Group - {pd.bloodGroup}</p>
-                <form onSubmit={this.onRemove}>
-                    <button>Remove / Disable Doctor</button>
+                <form onSubmit={this.onEnable}>
+                    <button>Enable Doctor</button>
                 </form>
             </div>
         );
     };
 
-    onRemove = async (event) => {
+    onEnable = async (event) => {
         event.preventDefault();
 
         const accounts = await web3.eth.getAccounts();
@@ -64,7 +64,7 @@ class App extends Component {
             color: "tomato",
         });
 
-        await contract.methods.removeDoctor(this.state.daddress).send({
+        await contract.methods.enableDoctor(this.state.daddress).send({
             from: accounts[0],
         });
 
@@ -75,8 +75,7 @@ class App extends Component {
         let dcontent = this.createContent(doctorsDetails);
 
         let message =
-            "Removed / Disabled Doctor with Ethereum Address - " +
-            this.state.daddress;
+            "Reinstated Doctor with Ethereum Address - " + this.state.daddress;
 
         this.setState({ message, color: "green" });
         this.setState({ dcontent });
@@ -90,7 +89,7 @@ class App extends Component {
                 </h3>
                 <NavBar />
                 <div>
-                    <h4>Disable / Remove Doctor</h4>
+                    <h4>Enable / Reinstate Doctor</h4>
                     <form onSubmit={this.onFindDoctor}>
                         <div>
                             <label>Doctor's Ethereum Address : </label>

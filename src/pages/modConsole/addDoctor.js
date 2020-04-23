@@ -56,7 +56,7 @@ class Com extends Component {
         hash = "0x" + hash;
         this.setState({ did: hash });
 
-        console.log(hash, date);
+        // console.log(hash, date);
 
         await contract.methods
             .addDoctor(
@@ -170,7 +170,7 @@ class Com extends Component {
                             }
                         />
                     </div>
-                    <button>Add Patient</button>
+                    <button>Add Doctor</button>
                 </form>
             </div>
         );
