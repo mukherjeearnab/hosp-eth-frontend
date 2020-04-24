@@ -6,6 +6,16 @@
     font-weight: 400;
 }
 
+a {
+    color: #2f89fc;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+a:hover {
+    color: #30e3ca;
+}
+
 h1,
 h2,
 h3,

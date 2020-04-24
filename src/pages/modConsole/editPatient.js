@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CircularProgress, Button, TextField } from "@material-ui/core";
 import web3 from "../../web3";
 import contract from "../../contract-h";
 import NavBar from "../../components/modNav";
@@ -22,8 +23,13 @@ class Com extends Component {
         const accounts = await web3.eth.getAccounts();
 
         this.setState({
-            message: "Waiting on transaction success...",
-            color: "tomato",
+            message: (
+                <span>
+                    <CircularProgress />
+                    <br></br> Waiting on transaction success...
+                </span>
+            ),
+            color: "#f26d5b",
         });
 
         // let date = this.state.pdate.split("-");
@@ -82,8 +88,11 @@ class Com extends Component {
                 <h4>Modify Patient Details</h4>
                 <form onSubmit={this.onFindPatient}>
                     <div>
-                        <label>Patient ID : </label>
-                        <input
+                        <label> : </label>
+                        <TextField
+                            className="inputs"
+                            label="Patient ID"
+                            variant="outlined"
                             value={this.state.phash}
                             onChange={(event) =>
                                 this.setState({
@@ -92,13 +101,17 @@ class Com extends Component {
                             }
                         />
                     </div>
-                    <button>Find Patient</button>
+                    <Button onClick={this.onFindPatient} variant="contained">
+                        Find Patient
+                    </Button>
                 </form>
                 <hr />
                 <form onSubmit={this.onEditPatient}>
                     <div>
-                        <label>Patient name : </label>
-                        <input
+                        <TextField
+                            className="inputs"
+                            label="Patient Name"
+                            variant="outlined"
                             value={this.state.pname}
                             onChange={(event) =>
                                 this.setState({
@@ -107,9 +120,12 @@ class Com extends Component {
                             }
                         />
                     </div>
+                    <br />
                     <div>
-                        <label>Date of Birth : </label>
-                        <input
+                        <TextField
+                            className="inputs"
+                            label="Date of Birth"
+                            variant="outlined"
                             value={this.state.pdate}
                             type="date"
                             onChange={(event) =>
@@ -119,11 +135,12 @@ class Com extends Component {
                             }
                         />
                     </div>
+                    <br />
                     <div>
-                        <label>
-                            Gender (0 => Male, 1 => Female, 2 => Other):{" "}
-                        </label>
-                        <input
+                        <TextField
+                            className="inputs"
+                            label="Gender"
+                            variant="outlined"
                             value={this.state.pgender}
                             type="number"
                             onChange={(event) =>
@@ -132,10 +149,14 @@ class Com extends Component {
                                 })
                             }
                         />
+                        <p>(0 => Male, 1 => Female, 2 => Other): </p>
                     </div>
+                    <br />
                     <div>
-                        <label>Height (in Centimeters) : </label>
-                        <input
+                        <TextField
+                            className="inputs"
+                            label="Height (in cm)"
+                            variant="outlined"
                             value={this.state.pheight}
                             type="number"
                             onChange={(event) =>
@@ -145,9 +166,12 @@ class Com extends Component {
                             }
                         />
                     </div>
+                    <br />
                     <div>
-                        <label>Weight (in Kilograms) : </label>
-                        <input
+                        <TextField
+                            className="inputs"
+                            label="Weight (in Kg)"
+                            variant="outlined"
                             value={this.state.pweight}
                             type="number"
                             onChange={(event) =>
@@ -157,9 +181,12 @@ class Com extends Component {
                             }
                         />
                     </div>
+                    <br />
                     <div>
-                        <label>Blood Group : </label>
-                        <input
+                        <TextField
+                            className="inputs"
+                            label="Blood Group"
+                            variant="outlined"
                             value={this.state.pbgroup}
                             onChange={(event) =>
                                 this.setState({
@@ -168,7 +195,14 @@ class Com extends Component {
                             }
                         />
                     </div>
-                    <button>Save Patient Details</button>
+                    <br />
+                    <Button
+                        onClick={this.onEditPatient}
+                        variant="contained"
+                        color="primary"
+                    >
+                        Save Patient Details
+                    </Button>
                 </form>
             </div>
         );

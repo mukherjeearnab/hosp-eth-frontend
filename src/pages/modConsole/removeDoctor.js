@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CircularProgress, Button, TextField } from "@material-ui/core";
 import web3 from "../../web3";
 import NavBar from "../../components/modNav";
 import contract from "../../contract-h";
@@ -48,7 +49,13 @@ class App extends Component {
                 <p>Weight - {pd.weight} Kilograms</p>
                 <p>Bloog Group - {pd.bloodGroup}</p>
                 <form onSubmit={this.onRemove}>
-                    <button>Remove / Disable Doctor</button>
+                    <Button
+                        onClick={this.onRemove}
+                        variant="contained"
+                        color="primary"
+                    >
+                        Remove / Disable Doctor
+                    </Button>
                 </form>
             </div>
         );
@@ -60,8 +67,13 @@ class App extends Component {
         const accounts = await web3.eth.getAccounts();
 
         this.setState({
-            message: "Waiting on transaction success...",
-            color: "tomato",
+            message: (
+                <span>
+                    <CircularProgress />
+                    <br></br> Waiting on transaction success...
+                </span>
+            ),
+            color: "#f26d5b",
         });
 
         await contract.methods.removeDoctor(this.state.daddress).send({
@@ -93,8 +105,10 @@ class App extends Component {
                     <h4>Disable / Remove Doctor</h4>
                     <form onSubmit={this.onFindDoctor}>
                         <div>
-                            <label>Doctor's Ethereum Address : </label>
-                            <input
+                            <TextField
+                                className="inputs"
+                                label="Doctor's Ethereum Address"
+                                variant="outlined"
                                 value={this.state.daddress}
                                 onChange={(event) =>
                                     this.setState({
@@ -103,7 +117,14 @@ class App extends Component {
                                 }
                             />
                         </div>
-                        <button>Find Doctor</button>
+                        <br />
+                        <Button
+                            onClick={this.onFindDoctor}
+                            variant="contained"
+                            color="primary"
+                        >
+                            Find Doctor
+                        </Button>
                     </form>
                     {this.state.dcontent}
                 </div>

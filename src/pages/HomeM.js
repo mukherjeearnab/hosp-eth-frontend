@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, TextField } from "@material-ui/core";
 import NavBar from "../components/modNav";
 import contract from "../contract-h";
 
@@ -72,7 +73,7 @@ class App extends Component {
                     </p>
                     <p>Height - {pd.height} Centimeters</p>
                     <p>Weight - {pd.weight} Kilograms</p>
-                    <p>Bloog Group - {pd.bloodGroup}</p>
+                    <p>Blood Group - {pd.bloodGroup}</p>
                 </div>
             );
         } else {
@@ -98,7 +99,7 @@ class App extends Component {
                     </p>
                     <p>Height - {pd.height} Centimeters</p>
                     <p>Weight - {pd.weight} Kilograms</p>
-                    <p>Bloog Group - {pd.bloodGroup}</p>
+                    <p>Blood Group - {pd.bloodGroup}</p>
                 </div>
             );
         }
@@ -116,8 +117,10 @@ class App extends Component {
                     <h4>Patient Search</h4>
                     <form onSubmit={this.onFindPatient}>
                         <div>
-                            <label>Patient ID : </label>
-                            <input
+                            <TextField
+                                className="inputs"
+                                label="Patient ID"
+                                variant="outlined"
                                 value={this.state.phash}
                                 onChange={(event) =>
                                     this.setState({
@@ -126,7 +129,14 @@ class App extends Component {
                                 }
                             />
                         </div>
-                        <button>Find Patient</button>
+                        <br />
+                        <Button
+                            onClick={this.onFindPatient}
+                            variant="contained"
+                            color="primary"
+                        >
+                            Find Patient
+                        </Button>
                     </form>
                     {this.state.pcontent}
                 </div>
@@ -135,8 +145,10 @@ class App extends Component {
                     <h4>Doctor Search</h4>
                     <form onSubmit={this.onFindDoctor}>
                         <div>
-                            <label>Doctor's Ethereum ID : </label>
-                            <input
+                            <TextField
+                                className="inputs"
+                                label="Doctor's Ethereum ID"
+                                variant="outlined"
                                 value={this.state.dhash}
                                 onChange={(event) =>
                                     this.setState({
@@ -145,7 +157,14 @@ class App extends Component {
                                 }
                             />
                         </div>
-                        <button>Find Doctor</button>
+                        <br />
+                        <Button
+                            onClick={this.onFindDoctor}
+                            variant="contained"
+                            color="primary"
+                        >
+                            Find Doctor
+                        </Button>
                     </form>
                     {this.state.dcontent}
                 </div>
