@@ -1,4 +1,14 @@
 import React, { Component } from "react";
+import {
+    Table,
+    TableBody,
+    TableContainer,
+    TableHead,
+    TableCell,
+    TableRow,
+    CircularProgress,
+} from "@material-ui/core";
+import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
 import web3 from "../../web3";
 import contract from "../../contract-h";
@@ -10,9 +20,19 @@ class App extends Component {
         pres: [],
         daddress: "",
         content: "",
+        message: "",
     };
 
     async componentDidMount() {
+        this.setState({
+            message: (
+                <span>
+                    <CircularProgress />
+                    <br></br> Loading.....
+                </span>
+            ),
+        });
+
         const accounts = await web3.eth.getAccounts();
         const presID = await contract.methods
             .retDoctorsPrescriptions(accounts[0])
@@ -32,7 +52,7 @@ class App extends Component {
             pres.push(obj);
         }
 
-        this.setState({ pres, daddress: accounts[0] });
+        this.setState({ pres, daddress: accounts[0], message: "" });
     }
 
     render() {
@@ -41,33 +61,44 @@ class App extends Component {
                 <NavBar />
                 <h1>Prescription Browser</h1>
                 <div>
-                    <table align="center" border="1">
-                        <tbody>
-                            <tr>
-                                <th>Patient Name</th>
-                                <th>Date & Time</th>
-                            </tr>
-
-                            {this.state.pres
-                                .slice(0)
-                                .reverse()
-                                .map((content) => {
-                                    return (
-                                        <tr key={content.id}>
-                                            <td>
-                                                <Link
-                                                    to={`/presViewer/${content.id}`}
-                                                >
-                                                    {content.patient}
-                                                </Link>
-                                            </td>
-                                            <td>{content.timestamp}</td>
-                                        </tr>
-                                    );
-                                })}
-                        </tbody>
-                    </table>
+                    <TableContainer component={Paper}>
+                        <Table aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell align="left">
+                                        Patient Name
+                                    </TableCell>
+                                    <TableCell align="left">
+                                        Date & Time
+                                    </TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {this.state.pres
+                                    .slice(0)
+                                    .reverse()
+                                    .map((content) => {
+                                        return (
+                                            <TableRow key={content.id}>
+                                                <TableCell align="left">
+                                                    <Link
+                                                        to={`/presViewer/${content.id}`}
+                                                    >
+                                                        {content.patient}
+                                                    </Link>
+                                                </TableCell>
+                                                <TableCell align="left">
+                                                    {content.timestamp}
+                                                </TableCell>
+                                            </TableRow>
+                                        );
+                                    })}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
                 </div>
+                <br />
+                {this.state.message}
             </div>
         );
     }

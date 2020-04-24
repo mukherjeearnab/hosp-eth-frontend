@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { TextField } from "@material-ui/core";
 import contractp from "../../contract-p";
 import contract from "../../contract-h";
 import NavBar from "../../components/docNav";
@@ -54,11 +55,19 @@ class App extends Component {
             <div>
                 <NavBar />
                 <h2>Prescription Viewer</h2>
-                <h4>Prescription ID - {this.state.presID}</h4>
-                <h5>Doctor - {this.state.dname}</h5>
-                <h5>Patient - {this.state.pname}</h5>
+                <h3>Prescription ID - {this.state.presID}</h3>
+                <p>Doctor - {this.state.dname}</p>
+                <p>Patient - {this.state.pname}</p>
                 <p>Date & Time - {this.state.time}</p>
-                <textarea readOnly value={this.state.content}></textarea>
+                <TextField
+                    className="inputs"
+                    label="Precription Content"
+                    variant="outlined"
+                    multiline
+                    rows={8}
+                    readOnly
+                    value={this.state.content}
+                ></TextField>
             </div>
         );
     }

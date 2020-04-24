@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { CircularProgress, Button, TextField } from "@material-ui/core";
 import md5 from "md5";
 import web3 from "../web3";
 import contract from "../contract-h";
@@ -23,8 +24,13 @@ class App extends Component {
     onNewPresciption = async (event) => {
         event.preventDefault();
         this.setState({
-            message: "Waiting on transaction success...",
-            color: "tomato",
+            message: (
+                <span>
+                    <CircularProgress />
+                    <br></br> Waiting on transaction success...
+                </span>
+            ),
+            color: "#f26d5b",
         });
 
         const now = new Date().getTime();
@@ -66,8 +72,10 @@ class App extends Component {
                     <h4>New Prescription</h4>
                     <form onSubmit={this.onNewPresciption}>
                         <div>
-                            <label>Patient ID : </label>
-                            <input
+                            <TextField
+                                className="inputs"
+                                label="Patient ID"
+                                variant="outlined"
                                 value={this.state.presPat}
                                 onChange={(event) =>
                                     this.setState({
@@ -76,9 +84,14 @@ class App extends Component {
                                 }
                             />
                         </div>
+                        <br />
                         <div>
-                            <label>Precription Content : </label>
-                            <textarea
+                            <TextField
+                                className="inputs"
+                                label="Precription Content"
+                                variant="outlined"
+                                multiline
+                                rows={8}
                                 value={this.state.presContent}
                                 onChange={(event) =>
                                     this.setState({
@@ -87,7 +100,14 @@ class App extends Component {
                                 }
                             />
                         </div>
-                        <button>Save Prescription</button>
+                        <br />
+                        <Button
+                            onClick={this.onNewPresciption}
+                            variant="contained"
+                            color="primary"
+                        >
+                            Save Prescription
+                        </Button>
                     </form>
                 </div>
             </div>
