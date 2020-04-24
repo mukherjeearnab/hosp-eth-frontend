@@ -66,10 +66,13 @@ class App extends Component {
                             <TableHead>
                                 <TableRow>
                                     <TableCell align="left">
-                                        Patient Name
+                                        <b>Serial</b>
                                     </TableCell>
                                     <TableCell align="left">
-                                        Date & Time
+                                        <b>Patient Name</b>
+                                    </TableCell>
+                                    <TableCell align="left">
+                                        <b>Date & Time</b>
                                     </TableCell>
                                 </TableRow>
                             </TableHead>
@@ -77,9 +80,12 @@ class App extends Component {
                                 {this.state.pres
                                     .slice(0)
                                     .reverse()
-                                    .map((content) => {
+                                    .map((content, index) => {
                                         return (
                                             <TableRow key={content.id}>
+                                                <TableCell align="left">
+                                                    {index + 1}
+                                                </TableCell>
                                                 <TableCell align="left">
                                                     <Link
                                                         to={`/presViewer/${content.id}`}

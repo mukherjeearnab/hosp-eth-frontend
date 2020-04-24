@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, TextField } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import contract from "../contract-h";
 
@@ -43,11 +44,11 @@ class App extends Component {
                 <p>Height - {pd.height} Centimeters</p>
                 <p>Weight - {pd.weight} Kilograms</p>
                 <p>Bloog Group - {pd.bloodGroup}</p>
-                <button>
+                <Button variant="contained">
                     <Link to={`/presBrowser/${this.state.phash}`}>
                         Browse Prescriptions
                     </Link>
-                </button>
+                </Button>
             </div>
         );
     };
@@ -63,8 +64,10 @@ class App extends Component {
                     <h4>Patient Search</h4>
                     <form onSubmit={this.onFindPatient}>
                         <div>
-                            <label>Patient ID : </label>
-                            <input
+                            <TextField
+                                className="inputs"
+                                label="Patient ID"
+                                variant="outlined"
                                 value={this.state.phash}
                                 onChange={(event) =>
                                     this.setState({
@@ -73,7 +76,14 @@ class App extends Component {
                                 }
                             />
                         </div>
-                        <button>Find Patient</button>
+                        <br />
+                        <Button
+                            onClick={this.onFindPatient}
+                            variant="contained"
+                            color="primary"
+                        >
+                            Find Patient
+                        </Button>
                     </form>
                     {this.state.pcontent}
                 </div>

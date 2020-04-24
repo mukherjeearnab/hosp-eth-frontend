@@ -10,7 +10,7 @@ class Com extends Component {
         color: "red",
         message: "",
         pname: "",
-        pdate: "",
+        pdate: "2017-01-05",
         pheight: 0,
         pweight: 0,
         pgender: "",

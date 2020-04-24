@@ -12,7 +12,7 @@ class Com extends Component {
         daddress: "",
         dname: "",
         did: "",
-        ddate: "01-05-2017",
+        ddate: "2017-01-05",
         dheight: 0,
         dweight: 0,
         dgender: "",
@@ -126,7 +126,6 @@ class Com extends Component {
                             className="inputs"
                             label="Date of Birth"
                             variant="outlined"
-                            defaultValue="05-24-2017"
                             value={this.state.ddate}
                             type="date"
                             onChange={(event) =>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { TextField } from "@material-ui/core";
 import contractp from "../../contract-p";
 import contract from "../../contract-h";
 import { Link } from "react-router-dom";
@@ -58,7 +59,15 @@ class App extends Component {
                 <h5>Doctor - {this.state.dname}</h5>
                 <h5>Patient - {this.state.pname}</h5>
                 <p>Date & Time - {this.state.time}</p>
-                <textarea readOnly value={this.state.content}></textarea>
+                <TextField
+                    className="inputs"
+                    label="Precription Content"
+                    variant="outlined"
+                    multiline
+                    rows={8}
+                    readOnly
+                    value={this.state.content}
+                ></TextField>
             </div>
         );
     }
