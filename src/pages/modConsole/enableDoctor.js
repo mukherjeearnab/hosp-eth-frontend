@@ -77,7 +77,7 @@ class App extends Component {
         let message =
             "Reinstated Doctor with Ethereum Address - " + this.state.daddress;
 
-        this.setState({ message, color: "green" });
+        this.setState({ message, color: "#83e85a" });
         this.setState({ dcontent });
     };
 

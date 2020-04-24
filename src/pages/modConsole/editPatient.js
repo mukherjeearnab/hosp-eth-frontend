@@ -47,7 +47,7 @@ class Com extends Component {
 
         let message = "Modified Patient with ID - " + this.state.phash;
 
-        this.setState({ message, color: "green" });
+        this.setState({ message, color: "#83e85a" });
     };
 
     onFindPatient = async (event) => {

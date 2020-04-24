@@ -49,7 +49,7 @@ class App extends Component {
 
         let message = "Added Prescription with ID - " + hash;
 
-        this.setState({ message, color: "green" });
+        this.setState({ message, color: "#83e85a" });
     };
 
     render() {

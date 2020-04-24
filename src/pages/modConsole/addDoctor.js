@@ -75,7 +75,7 @@ class Com extends Component {
 
         let message = "Added Doctor with ID - " + hash;
 
-        this.setState({ message, color: "green" });
+        this.setState({ message, color: "#83e85a" });
     };
 
     render() {

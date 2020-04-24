@@ -52,8 +52,10 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <h1>{this.state.contractName}</h1>
-                <h2>Account - {this.state.account}</h2>
+                <h1 style={{ color: "#2f89fc" }}>{this.state.contractName}</h1>
+                <h2 style={{ color: "#30e3ca" }}>
+                    Account - {this.state.account}
+                </h2>
                 <Route
                     exact
                     path="/"

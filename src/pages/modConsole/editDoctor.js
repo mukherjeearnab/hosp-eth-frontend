@@ -49,7 +49,7 @@ class Com extends Component {
 
         let message = "Modified Doctor with ID - " + this.state.did;
 
-        this.setState({ message, color: "green" });
+        this.setState({ message, color: "#83e85a" });
     };
 
     onFindDoctor = async (event) => {
