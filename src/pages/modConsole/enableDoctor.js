@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { CircularProgress, Button, TextField } from "@material-ui/core";
 import web3 from "../../web3";
 import NavBar from "../../components/modNav";
@@ -11,6 +12,16 @@ class App extends Component {
         daddress: "",
         dcontent: "",
     };
+
+    async componentDidMount() {
+        this.checkAccess();
+    }
+
+    async checkAccess() {
+        const accounts = await web3.eth.getAccounts();
+        const result = await contract.methods.moderators(accounts[0]).call();
+        if (!result) this.setState({ message: <Redirect to="/" /> });
+    }
 
     onFindDoctor = async (event) => {
         event.preventDefault();

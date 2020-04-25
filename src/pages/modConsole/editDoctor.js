@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { CircularProgress, Button, TextField } from "@material-ui/core";
 import web3 from "../../web3";
 import contract from "../../contract-h";
@@ -17,6 +18,16 @@ class Com extends Component {
         dbgroup: "",
         did: "",
     };
+
+    async componentDidMount() {
+        this.checkAccess();
+    }
+
+    async checkAccess() {
+        const accounts = await web3.eth.getAccounts();
+        const result = await contract.methods.moderators(accounts[0]).call();
+        if (!result) this.setState({ message: <Redirect to="/" /> });
+    }
 
     onEditPatient = async (event) => {
         event.preventDefault();
